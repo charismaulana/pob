@@ -653,95 +653,6 @@
             cursor: pointer;
             opacity: 1;
         }
-
-        /* Mobile Responsive for Planning Page */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .header-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .header-actions .btn {
-                width: 100%;
-            }
-
-            table {
-                table-layout: auto;
-            }
-
-            table th:nth-child(2),
-            table td:nth-child(2),
-            table th:nth-child(3),
-            table td:nth-child(3),
-            table th:nth-child(7),
-            table td:nth-child(7) {
-                display: none;
-            }
-
-            table th,
-            table td {
-                width: auto !important;
-                padding: 0.4rem;
-                font-size: 0.7rem;
-            }
-
-            td.actions {
-                white-space: nowrap;
-            }
-
-            td.actions .btn {
-                padding: 0.25rem 0.4rem;
-                font-size: 0.6rem;
-            }
-
-            .modal-content {
-                width: 95% !important;
-                max-width: none !important;
-                margin: 0.5rem;
-            }
-
-            .modal-content .row {
-                flex-direction: column;
-            }
-
-            .modal-content .col-6 {
-                max-width: 100%;
-            }
-
-            .employee-dropdown {
-                max-height: 200px;
-            }
-
-            .employee-option {
-                padding: 0.5rem;
-                font-size: 0.85rem;
-            }
-
-            .pagination-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .pagination-info {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            table th:nth-child(4),
-            table td:nth-child(4),
-            table th:nth-child(6),
-            table td:nth-child(6) {
-                display: none;
-            }
-        }
     </style>
 
     @push('scripts')
@@ -911,33 +822,33 @@
             if (schedulesTable) {
                 const headers = schedulesTable.querySelectorAll('th.sortable');
                 headers.forEach(header => {
-                    header.addEventListener('click', function () {
+                    header.addEventListener('click', function() {
                         const sortKey = this.dataset.sort;
                         const tbody = schedulesTable.querySelector('tbody');
                         const rows = Array.from(tbody.querySelectorAll('tr'));
                         const isAsc = this.classList.contains('asc');
-
+                        
                         // Remove sort classes from all headers
                         headers.forEach(h => h.classList.remove('asc', 'desc'));
-
+                        
                         // Add appropriate class to clicked header
                         this.classList.add(isAsc ? 'desc' : 'asc');
-
+                        
                         // Get column index
                         const colIndex = Array.from(this.parentElement.children).indexOf(this);
-
+                        
                         rows.sort((a, b) => {
                             let aVal = a.children[colIndex]?.textContent.trim() || '';
                             let bVal = b.children[colIndex]?.textContent.trim() || '';
-
+                            
                             // Check if numeric
                             if (!isNaN(aVal) && !isNaN(bVal)) {
                                 return isAsc ? bVal - aVal : aVal - bVal;
                             }
-
+                            
                             return isAsc ? bVal.localeCompare(aVal) : aVal.localeCompare(bVal);
                         });
-
+                        
                         rows.forEach(row => tbody.appendChild(row));
                     });
                 });
