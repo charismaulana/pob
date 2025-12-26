@@ -179,7 +179,8 @@
                                         <td>
                                             <strong>{{ $emp['name'] ?? 'N/A' }}</strong>
                                             <div style="font-size: 0.85rem; color: var(--text-muted);">
-                                                {{ $emp['employee_number'] ?? '' }}</div>
+                                                {{ $emp['employee_number'] ?? '' }}
+                                            </div>
                                         </td>
                                         <td>{{ $emp['department'] ?? 'N/A' }}</td>
                                         <td>{{ $emp['location'] ?? 'N/A' }}</td>
@@ -225,7 +226,8 @@
                                         <td>
                                             <strong>{{ $emp['name'] ?? 'N/A' }}</strong>
                                             <div style="font-size: 0.85rem; color: var(--text-muted);">
-                                                {{ $emp['employee_number'] ?? '' }}</div>
+                                                {{ $emp['employee_number'] ?? '' }}
+                                            </div>
                                         </td>
                                         <td>{{ $emp['department'] ?? 'N/A' }}</td>
                                         <td>{{ $emp['location'] ?? 'N/A' }}</td>
@@ -250,43 +252,86 @@
         </div>
     </div>
 
-@push('scripts')
-<script>
-    // Generic table sorting for Absent and Unexpected tables
-    function setupTableSorting(tableId) {
-        const table = document.getElementById(tableId);
-        if (!table) return;
-        
-        const headers = table.querySelectorAll('th.sortable');
-        headers.forEach(header => {
-            header.addEventListener('click', function() {
-                const tbody = table.querySelector('tbody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                const isAsc = this.classList.contains('asc');
-                
-                // Remove sort classes from all headers in this table
-                headers.forEach(h => h.classList.remove('asc', 'desc'));
-                
-                // Add appropriate class to clicked header
-                this.classList.add(isAsc ? 'desc' : 'asc');
-                
-                // Get column index
-                const colIndex = Array.from(this.parentElement.children).indexOf(this);
-                
-                rows.sort((a, b) => {
-                    let aVal = a.children[colIndex]?.textContent.trim() || '';
-                    let bVal = b.children[colIndex]?.textContent.trim() || '';
-                    
-                    return isAsc ? bVal.localeCompare(aVal) : aVal.localeCompare(bVal);
+    <style>
+        /* Mobile Responsive for Comparison Page */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .col-6 {
+                max-width: 100%;
+            }
+
+            table th:nth-child(n+4),
+            table td:nth-child(n+4) {
+                display: none;
+            }
+
+            table th,
+            table td {
+                padding: 0.4rem;
+                font-size: 0.7rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+            }
+
+            .card div[style*="gap: 2rem"] {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    @push('scripts')
+        <script>
+            // Generic table sorting for Absent and Unexpected tables
+            function setupTableSorting(tableId) {
+                const table = document.getElementById(tableId);
+                if (!table) return;
+
+                const headers = table.querySelectorAll('th.sortable');
+                headers.forEach(header => {
+                    header.addEventListener('click', function () {
+                        const tbody = table.querySelector('tbody');
+                        const rows = Array.from(tbody.querySelectorAll('tr'));
+                        const isAsc = this.classList.contains('asc');
+
+                        // Remove sort classes from all headers in this table
+                        headers.forEach(h => h.classList.remove('asc', 'desc'));
+
+                        // Add appropriate class to clicked header
+                        this.classList.add(isAsc ? 'desc' : 'asc');
+
+                        // Get column index
+                        const colIndex = Array.from(this.parentElement.children).indexOf(this);
+
+                        rows.sort((a, b) => {
+                            let aVal = a.children[colIndex]?.textContent.trim() || '';
+                            let bVal = b.children[colIndex]?.textContent.trim() || '';
+
+                            return isAsc ? bVal.localeCompare(aVal) : aVal.localeCompare(bVal);
+                        });
+
+                        rows.forEach(row => tbody.appendChild(row));
+                    });
                 });
-                
-                rows.forEach(row => tbody.appendChild(row));
-            });
-        });
-    }
-    
-    setupTableSorting('absentTable');
-    setupTableSorting('unexpectedTable');
-</script>
-@endpush
+            }
+
+            setupTableSorting('absentTable');
+            setupTableSorting('unexpectedTable');
+        </script>
+    @endpush
 @endsection

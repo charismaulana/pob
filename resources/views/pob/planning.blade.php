@@ -648,10 +648,17 @@
         input[type="month"]::-webkit-inner-spin-button,
         input[type="month"]::-webkit-calendar-picker-indicator,
         input[type="date"]::-webkit-inner-spin-button,
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1) brightness(2);
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        .modal-content input[type="date"]::-webkit-calendar-picker-indicator,
+        .modal-content input[type="month"]::-webkit-calendar-picker-indicator {
+            filter: invert(1) brightness(2) !important;
             cursor: pointer;
-            opacity: 1;
+            opacity: 1 !important;
+        }
+
+        .modal-content input[type="date"],
+        .modal-content input[type="month"] {
+            color-scheme: dark;
         }
 
         /* Mobile Responsive for Planning Page */
@@ -673,16 +680,10 @@
 
             table {
                 table-layout: auto;
+                min-width: 1000px;
             }
 
-            table th:nth-child(2),
-            table td:nth-child(2),
-            table th:nth-child(3),
-            table td:nth-child(3),
-            table th:nth-child(7),
-            table td:nth-child(7) {
-                display: none;
-            }
+            /* Show all columns - allow horizontal scroll instead of hiding */
 
             table th,
             table td {
@@ -735,11 +736,9 @@
 
         @media (max-width: 480px) {
 
-            table th:nth-child(4),
-            table td:nth-child(4),
-            table th:nth-child(6),
-            table td:nth-child(6) {
-                display: none;
+            /* Keep all columns visible on extra small screens too */
+            table {
+                min-width: 900px;
             }
         }
     </style>

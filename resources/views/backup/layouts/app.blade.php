@@ -637,6 +637,308 @@
         .text-center {
             text-align: center;
         }
+
+        /* Mobile Responsive Styles */
+        
+        /* Hamburger Button - Hidden on Desktop */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 8px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            background: rgba(0, 255, 100, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 100, 0.3);
+        }
+
+        .hamburger-line {
+            width: 22px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+                flex-wrap: wrap;
+                position: relative;
+            }
+
+            .hamburger-btn {
+                display: flex;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1rem;
+            }
+
+            .navbar-brand span {
+                font-size: 0.6rem;
+            }
+
+            .navbar-nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--card-border);
+                margin-top: 0.75rem;
+            }
+
+            .navbar-nav.show {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+                text-align: center;
+                border-radius: 8px;
+                background: rgba(0, 255, 100, 0.05);
+            }
+
+            .nav-link:hover {
+                background: rgba(0, 255, 100, 0.15);
+            }
+
+            .user-info {
+                display: flex;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+
+            .api-status {
+                justify-content: center;
+                font-size: 0.75rem;
+                padding: 0.5rem;
+            }
+
+            .api-status span {
+                display: inline;
+            }
+
+            .logout-btn {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 0.8rem;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .page-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 1.25rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            .header-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .card-title {
+                font-size: 0.9rem;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .filter-bar .form-group {
+                width: 100%;
+            }
+
+            .filter-bar .form-control {
+                width: 100% !important;
+            }
+
+            .table-container {
+                margin: 0 -1rem;
+                border-radius: 0;
+            }
+
+            table {
+                font-size: 0.75rem;
+            }
+
+            th,
+            td {
+                padding: 0.5rem;
+            }
+
+            th {
+                font-size: 0.65rem;
+            }
+
+            .btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .btn-sm {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.65rem;
+            }
+
+            .badge {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .form-control {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .form-label {
+                font-size: 0.75rem;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .col,
+            .col-3,
+            .col-4,
+            .col-6 {
+                max-width: 100%;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal-lg {
+                width: 95%;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.25rem;
+            }
+
+            .pagination a,
+            .pagination span {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+
+            .actions {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .footer {
+                padding: 0.75rem 1rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .navbar-brand .logo {
+                font-size: 1.5rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 0.85rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-link {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.6rem;
+            }
+
+            .nav-link i {
+                display: none;
+            }
+
+            table th:nth-child(n+5),
+            table td:nth-child(n+5) {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 
@@ -649,7 +951,15 @@
                 <span>PERSON ON BOARD SYSTEM</span>
             </div>
         </a>
-        <div class="navbar-nav">
+
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <div class="navbar-nav" id="mobileNav">
             @auth
                 <a href="{{ route('pob.planning') }}"
                     class="nav-link {{ request()->routeIs('pob.planning') ? 'active' : '' }}">
@@ -695,6 +1005,25 @@
             @endauth
         </div>
     </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger-btn');
+            nav.classList.toggle('show');
+            hamburger.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            const nav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger-btn');
+            if (!e.target.closest('.navbar-nav') && !e.target.closest('.hamburger-btn')) {
+                nav.classList.remove('show');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
 
     <div class="main-content">
         <div class="container">

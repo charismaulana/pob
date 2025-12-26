@@ -263,9 +263,9 @@
                 max-width: 100%;
             }
 
-            table th:nth-child(n+4),
-            table td:nth-child(n+4) {
-                display: none;
+            /* Show all columns - allow horizontal scroll instead of hiding */
+            table {
+                min-width: 700px;
             }
 
             table th,

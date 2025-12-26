@@ -639,7 +639,7 @@
         }
 
         /* Mobile Responsive Styles */
-        
+
         /* Hamburger Button - Hidden on Desktop */
         .hamburger-btn {
             display: none;
@@ -823,10 +823,13 @@
             .table-container {
                 margin: 0 -1rem;
                 border-radius: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             table {
                 font-size: 0.75rem;
+                min-width: 600px;
             }
 
             th,
